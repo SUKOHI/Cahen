@@ -1,0 +1,23 @@
+{
+    "name": "sukohi/cahen",
+    "description": "A PHP package mainly developed for Laravel to manage order numbers of DB.",
+    "authors": [
+        {
+            "name": "Sukohi",
+            "email": "capilano.sukohi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Sukohi\\Cahen\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
