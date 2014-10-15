@@ -26,29 +26,29 @@ Usage
 **Basic moving**
 
     $model = Something::find(1);
-    Cahen::move($model)->to('position', 5);
+    Cahen::move($model)->to('column_name', 5);
 
 **Up**
 
-    Cahen::move($model)->up('position');
+    Cahen::move($model)->up('column_name');
 
 **Down**
 
-    Cahen::move($item)->down('position');
+    Cahen::move($item)->down('column_name');
 		
 **to First**
 
-    Cahen::move($item)->first('position');
+    Cahen::move($item)->first('column_name');
 
 **to Last**
 
-    Cahen::move($item)->last('position');
+    Cahen::move($item)->last('column_name');
     
 **with Transaction**
 
     DB::beginTransaction();
     
-    if(!Cahen::move($item)->to('position', 5)) {
+    if(!Cahen::move($item)->to('column_name', 5)) {
     	
 	    DB::rollback();
 	
@@ -59,4 +59,4 @@ Usage
 **Alignment**
 
     $model = Something::orderBy('id', 'ASC')->get();
-    Cahen::align($model, 'position');
+    Cahen::align($model, 'column_name');
