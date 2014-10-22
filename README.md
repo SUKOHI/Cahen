@@ -56,6 +56,17 @@ Usage
     
     DB::commit();
     
+    
+**Where Clause**
+
+You can sort data that has specific values.
+
+    $model = Something::find(1);
+    Cahen::move($model)
+        ->where('column_1', '=', 'value')
+        ->where('column_2', 'LIKE', '%value%')
+        ->to('column_name', 5);
+
 **Alignment**
 
     $model = Something::orderBy('id', 'ASC')->get();

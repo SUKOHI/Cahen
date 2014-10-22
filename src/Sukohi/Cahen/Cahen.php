@@ -3,10 +3,18 @@
 class Cahen {
 	
 	private $_model;
+	private $_where_clauses = [];
 	
 	public function move($model) {
 		
 		$this->_model = $model;
+		return $this;
+		
+	}
+	
+	public function where($column, $operator, $value) {
+		
+		$this->_where_clauses[] = [$column, $operator, $value];
 		return $this;
 		
 	}
@@ -21,11 +29,19 @@ class Cahen {
 		
 		$moving_id = $this->_model->id;
 		$moving_position = $position - 1;
-		$model_data = $this->_model->select('id')
-						->where('id', '<>', $moving_id)
-						->orderBy($column, 'ASC')
-						->get();
+		$query = $this->_model->select('id');
 		
+		if(!empty($this->_where_clauses)) {
+			
+			foreach ($this->_where_clauses as $where_clauses) {
+				
+				$query->where($where_clauses[0], $where_clauses[1], $where_clauses[2]);
+				
+			}
+			
+		}
+		
+		$model_data = $query->where('id', '<>', $moving_id)->orderBy($column, 'ASC')->get();
 		$new_position = 0;
 		$moved = false;
 		
