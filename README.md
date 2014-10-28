@@ -71,3 +71,10 @@ You can sort data that has specific values.
 
     $model = Something::orderBy('id', 'ASC')->get();
     Cahen::align($model, 'column_name');
+
+License
+====
+
+This package is licensed under the MIT License.
+
+Copyright 2014 Sukohi Kuhoh
