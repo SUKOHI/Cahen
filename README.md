@@ -67,6 +67,16 @@ You can sort data that has specific values.
         ->where('column_2', 'LIKE', '%value%')
         ->to('column_name', 5);
 
+**Set data**
+
+You can sort data in specific model data.
+
+    $model = Something::find(1);
+    $models = Something::where('id', '<', 5)->get();
+    Cahen::move($model)
+        ->data($models)
+        ->to('position', 3);
+
 **Alignment**
 
     $model = Something::orderBy('id', 'ASC')->get();

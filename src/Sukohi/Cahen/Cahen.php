@@ -4,6 +4,7 @@ class Cahen {
 	
 	private $_model;
 	private $_where_clauses = array();
+    private $_model_data = array();
 	
 	public function move($model) {
 		
@@ -18,6 +19,13 @@ class Cahen {
 		return $this;
 		
 	}
+
+    public function data($models) {
+
+        $this->_model_data = $models;
+        return $this;
+
+    }
 	
 	public function to($column, $position) {
 		
@@ -29,19 +37,29 @@ class Cahen {
 		
 		$moving_id = $this->_model->id;
 		$moving_position = $position - 1;
-		$query = $this->_model->select('id');
-		
-		if(!empty($this->_where_clauses)) {
-			
-			foreach ($this->_where_clauses as $where_clauses) {
-				
-				$query->where($where_clauses[0], $where_clauses[1], $where_clauses[2]);
-				
-			}
-			
-		}
-		
-		$model_data = $query->where('id', '<>', $moving_id)->orderBy($column, 'ASC')->get();
+
+        if(!empty($this->_model_data)) {
+
+            $model_data = $this->_model_data;
+
+        } else {
+
+            $query = $this->_model->select('id');
+
+            if(!empty($this->_where_clauses)) {
+
+                foreach ($this->_where_clauses as $where_clauses) {
+
+                    $query->where($where_clauses[0], $where_clauses[1], $where_clauses[2]);
+
+                }
+
+            }
+
+            $model_data = $query->where('id', '<>', $moving_id)->orderBy($column, 'ASC')->get();
+
+        }
+
 		$new_position = 0;
 		$moved = false;
 		
