@@ -71,11 +71,16 @@ You can sort data that has specific values.
 
 You can sort data in specific model data.
 
-    $model = Something::find(1);
-    $models = Something::where('id', '<', 5)->get();
+    $moving_id = 1;
+    $model = Something::find($moving_id);
+    $models = Something::where('id', '<', 5)
+                ->where('id', '<>', $moving_id)
+                ->get();
     Cahen::move($model)
         ->data($models)
-        ->to('position', 3);
+        ->to('column_name', 3);
+
+    * Note: You need to exclude the moving id.
 
 **Alignment**
 
