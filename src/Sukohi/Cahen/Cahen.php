@@ -92,7 +92,7 @@ class Cahen {
 			
 		}
 		
-		if(!$moved) {
+		if($moved) {
 			
 			$this->_model->$column = $new_position;
 			$this->_model->save();
