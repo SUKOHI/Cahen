@@ -9,6 +9,10 @@ class Cahen extends Facade {
    *
    * @return string
    */
-  protected static function getFacadeAccessor() { return 'Cahen'; }
+  protected static function getFacadeAccessor() {
+
+    return 'Cahen';
+
+  }
 
 }

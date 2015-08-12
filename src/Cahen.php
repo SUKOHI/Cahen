@@ -3,8 +3,7 @@
 class Cahen {
 
     private $_model;
-    private $_where_clauses = array();
-    private $_model_data = array();
+    private $_where_clauses, $_model_data = [];
 
     public function move($model) {
 
@@ -99,7 +98,7 @@ class Cahen {
 
         }
 
-        $this->_where_clauses = array();
+        $this->_where_clauses = [];
         return true;
 
     }
