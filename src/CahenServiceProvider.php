@@ -28,10 +28,11 @@ class CahenServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['Cahen'] = $this->app->share(function($app)
-		{
-			return new Cahen;
-		});
+        $this->app->singleton('Cahen', function(){
+
+            return new Cahen;
+
+        });
 	}
 
 	/**
